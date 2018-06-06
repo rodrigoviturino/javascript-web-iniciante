@@ -1,5 +1,6 @@
 // Acessando o CONTEUDO E MODIFICANDO
 let titulo = document.querySelector('.titulo');
+
 titulo.textContent = 'Viturino Nutricionista';
 //--
 var pacientes = document.querySelectorAll(".paciente");
@@ -44,4 +45,47 @@ for( let i = 0; i < pacientes.length; i++){
     
 }
 
+
+var botaoAdicionar = document.querySelector('#adicionar-paciente');
+
+botaoAdicionar.addEventListener('click',function(event){  
+    event.preventDefault();
+ 
+    let form = document.querySelector('#form-adiciona');
+   
+    // PEGANDO O VALOR DO INPUT
+    // Lembrando que usamos o NAME do INPUT 
+    let nome = form.nome.value;
+    let peso = form.peso.value;
+    let altura = form.altura.value;
+    let gordura = form.gordura.value;
+
+    // CRIANDO O ELEMENTO TR VAZIO
+    let pacienteTr = document.createElement("tr");
+    
+    // CRIANDO ELEMENTO TD VAZIO
+    let nomeTd = document.createElement('td');
+    let pesoTd = document.createElement('td');
+    let alturaTd = document.createElement('td');
+    let gorduraTd = document.createElement('td');
+    let imcTd = document.createElement('td');
+    
+    // PEGANDO A TD criada e pegando o VALORES dos INPUT 
+    nomeTd.textContent = nome;
+    pesoTd.textContent = peso;
+    alturaTd.textContent = altura;
+    gorduraTd.textContent = gordura;
+
+    // PEGANDO a TR e ADICIONANDO ELEMENTO DENTRO DELA COMO FILHO
+    pacienteTr.appendChild(nomeTd);
+    pacienteTr.appendChild(pesoTd);
+    pacienteTr.appendChild(alturaTd);
+    pacienteTr.appendChild(gorduraTd);
+    
+    let tabela = document.querySelector('#tabela-pacientes');
+    tabela.appendChild(pacienteTr);
+    
+    
+    
+});
 
