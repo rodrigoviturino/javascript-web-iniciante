@@ -48,8 +48,8 @@ function exibeMensagensDeErro(erros) {
     ul.innerHTML = ""; // innerHTML: ele pega o elemento, no caso é LI
         erros.forEach(function(erro) {
             let li = document.createElement('li');
-            li.textContent = erro;
-            ul.appendChild(li);
+                li.textContent = erro;
+                ul.appendChild(li);
         });
   }
 
