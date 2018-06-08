@@ -17,28 +17,44 @@
     let pacienteTr = montaTr(paciente);
 
 
-    var erro = validaPaciente(paciente);
+    // MENSAGEM/ARRAY DE ERROS
+    let erro = validaPaciente(paciente);
+    console.log(erro);
     // SE o paciente for INVALIDO
         if(erro.length > 0){
-            var mensagemErro = document.querySelector('#mensagem-erro');
-            mensagemErro.textContent = erro;
+            exibeMensagensDeErro(erro);
+            //var mensagemErro = document.querySelector('#mensagem-erro');
             return;
         }
 
-    // Tabela
-    let tabela = document.querySelector('#tabela-pacientes');
+    // TABELA***
     // ADICIONA o PACIENTE na TABELA
+    let tabela = document.querySelector('#tabela-pacientes');
     tabela.appendChild(pacienteTr);
 
 // LIMPANDO OS CAMPOS APÓS, SER ADICIONAR PACIENTE NA TABELA
 form.reset();
 
+// APÓS DAR ERRO E ADICIONAR, NAO VAI LIMPAR A TELA DE ERRO, COM ISSO AGORA VAI !!!
+    let mensagensErro = document.querySelector('#mensagens-erro');
+    mensagensErro.innerHTML = "";
+
 }); // FIM FUNÇÃO DO BOTÃO
 
+// JOGANDO ERROS NA UL LI 
+function exibeMensagensDeErro(erros) {
+    let ul = document.querySelector('#mensagens-erro');
+
+    ul.innerHTML = ""; // innerHTML: ele pega o elemento, no caso é LI
+        erros.forEach(function(erro) {
+            let li = document.createElement('li');
+            li.textContent = erro;
+            ul.appendChild(li);
+        });
+  }
 
 
-
-            /* ---------- FUNÇÕES ---------- */
+/* ------------------------------- FUNÇÕES ----------------------------- */
 function obtemPacienteDoFormulario(form){
     // FORM está mandando para nós o VALOR DO INPUT
     // Essa VARIAVEL está pegando o VALOR DO INPUT DO FORM QUE O USUARIO DIGITA
@@ -90,7 +106,11 @@ function montaTd(dado,classe){
 // PACIENTE INVALIDO
 function validaPaciente(paciente) {
 
-    var erros = [];
+    let erros = [];
+
+    if(paciente.nome.length == 0){
+        erros.push("O Nome pode ser em branco");
+    }
 
     if(!validaPeso(paciente.peso)) {
         erros.push("Peso é inválido");
@@ -98,6 +118,20 @@ function validaPaciente(paciente) {
 
     if(!validaAltura(paciente.altura)) {
         erros.push('Altura é inválida');        
+    }
+
+// -------------------------- VALIDANDO SE O PACIENTE DEIXAR O CAMPO EM BRANCO ----------------------
+
+    if(paciente.gordura.length == 0){
+        erros.push('A Gordura do paciente não pode ser em branco');
+    }
+
+    if(paciente.peso.length == 0){
+        erros.push("O peso não pode ficar em branco");
+    }
+
+    if(paciente.altura.length == 0){
+        erros.push("Altrura não pode ser em branco.");
     }
 
     return erros;
