@@ -11,11 +11,10 @@
     // EXTRAINDO OS VALORES DO INPUT
     // Lembrando que usamos o NAME do INPUT 
     let paciente = obtemPacienteDoFormulario(form); // OBJETO
-
+    
     // MontaTr,MontaTd, Pega VALOR INPUT, JUNTA TD DENTRO DA TR
     // Esse cara tem as informações do INPUT e PREENCHE a TABELA
     let pacienteTr = montaTr(paciente);
-
 
     // MENSAGEM/ARRAY DE ERROS
     let erro = validaPaciente(paciente);
