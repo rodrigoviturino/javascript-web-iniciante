@@ -1,20 +1,19 @@
 
-// FORMULARIO 
+// FORMULARIO
     var botaoAdicionar = document.querySelector('#adicionar-paciente');
 
     botaoAdicionar.addEventListener('click', function (event) {
-    event.preventDefault();
-
+      event.preventDefault();
     // ACESSANDO OS CAMPOS DO FORM
     let form = document.querySelector('#form-adiciona');
 
     // EXTRAINDO OS VALORES DO INPUT
-    // Lembrando que usamos o NAME do INPUT 
+    // Lembrando que usamos o NAME do INPUT
     let paciente = obtemPacienteDoFormulario(form); // OBJETO
-    
+
     // MontaTr,MontaTd, Pega VALOR INPUT, JUNTA TD DENTRO DA TR
     // Esse cara tem as informações do INPUT e PREENCHE a TABELA
-    let pacienteTr = montaTr(paciente);
+    // let pacienteTr = montaTr(paciente);
 
     // MENSAGEM/ARRAY DE ERROS
     let erros = validaPaciente(paciente);
@@ -26,11 +25,6 @@
             return;
         }
 
-    // TABELA***
-    // ADICIONA o PACIENTE na TABELA
-    let tabela = document.querySelector('#tabela-pacientes');
-    tabela.appendChild(pacienteTr);
-
 // LIMPANDO OS CAMPOS APÓS, SER ADICIONAR PACIENTE NA TABELA
 form.reset();
 
@@ -38,9 +32,20 @@ form.reset();
     let mensagensErro = document.querySelector('#mensagens-erro');
     mensagensErro.innerHTML = "";
 
-}); // FIM FUNÇÃO DO BOTÃO
+});
+// FIM FUNÇÃO DO BOTÃO
 
-// JOGANDO ERROS NA UL LI 
+function adicionaPacienteNaTabela(paciente){
+    let pacienteTr = montaTr(paciente);
+    // Adicionando na TABELA
+    let tabela = document.querySelector('#tabela-pacientes');
+    tabela.appendChild(pacienteTr);
+
+}
+
+
+
+// JOGANDO ERROS NA UL LI
 function exibeMensagensDeErro(erros) {
     let ul = document.querySelector('#mensagens-erro');
 
@@ -93,6 +98,7 @@ function montaTr(paciente) {
     return pacienteTr;
 };
 
+// Esse é o esquema de inserir CLASS e o CONTEUDO TEXTO na TD
 function montaTd(dado,classe){
     let td = document.createElement('td');
     td.textContent = dado;
@@ -116,7 +122,7 @@ function validaPaciente(paciente) {
     }
 
     if(!validaAltura(paciente.altura)) {
-        erros.push('Altura é inválida');        
+        erros.push('Altura é inválida');
     }
 
 // -------------------------- VALIDANDO SE O PACIENTE DEIXAR O CAMPO EM BRANCO ----------------------
