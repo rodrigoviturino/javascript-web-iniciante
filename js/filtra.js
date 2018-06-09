@@ -3,7 +3,6 @@ var campoFiltro = document.querySelector('#filtrar-tabela');
 campoFiltro.addEventListener("input",function(){
     var pacientes = document.querySelectorAll('.paciente');
 
-
     if(this.value.length > 0) {
 
       // Pegando todos itens do array
