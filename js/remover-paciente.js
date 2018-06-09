@@ -1,9 +1,9 @@
 var pacientes = document.querySelectorAll('.paciente');
 
 var tabela = document.querySelector('table');
-tabela.addEventListener('click', function(event){
+tabela.addEventListener('dblclick', function(event){
     event.target.parentNode.classList.add('fadeOut');
-    
+
     // SetTimeout:  ele segura o elemento por tanto segundos e depois remove
     setTimeout(function(){
         event.target.parentNode.remove();
@@ -14,7 +14,7 @@ tabela.addEventListener('click', function(event){
     // let paiEvento = alvoEvento.parentNode; // vira uma 'TR' da vida
 
     // paiEvento.remove();
-    
+
 })
 
 
@@ -24,4 +24,3 @@ tabela.addEventListener('click', function(event){
 //         this.remove(); // this é o dono do evento, quem ta escutando? paciente
 //     });
 // });
-

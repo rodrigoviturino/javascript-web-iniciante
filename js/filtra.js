@@ -3,7 +3,8 @@ var campoFiltro = document.querySelector('#filtrar-tabela');
 campoFiltro.addEventListener("input",function(){
     var pacientes = document.querySelectorAll('.paciente');
 
-    if(this.value.length > 0) {
+//Depois que apagar o campo do input, tem que mostrar TODOS itens da lista
+    if(this.value.length > 0) { // SE tiver palavra > 0
 
       // Pegando todos itens do array
       for(let i=0; i < pacientes.length; i++) {
@@ -11,6 +12,7 @@ campoFiltro.addEventListener("input",function(){
             let paciente = pacientes[i];
             let tdNome = paciente.querySelector('.info-nome');
             let nome = tdNome.textContent;
+        // ----- EXPRESSAO REGULAR ------
             let expressao = new RegExp(this.value,"i");
 // Tive que inverter a logica porque ele estava colocando a class 'invisivel'
             if(!expressao.test(nome)){
