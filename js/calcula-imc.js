@@ -3,16 +3,17 @@ let titulo = document.querySelector('.titulo');
 
 titulo.textContent = 'Viturino Nutricionista';
 //--
-let pacientes = document.querySelectorAll(".paciente");
+var pacientes = document.querySelectorAll(".paciente");
 
 for (let i = 0; i < pacientes.length; i++) {
 
     let paciente = pacientes[i];
-
+ 
+    
     //PESO
-    let tdPeso = paciente.querySelector('.info-peso');
+    let tdPeso = paciente.querySelector('.info-peso');    
     let peso = tdPeso.textContent;
-
+ 
     // ALTURA
     let tdAltura = paciente.querySelector('.info-altura');
     let altura = tdAltura.textContent;

@@ -17,11 +17,11 @@
     let pacienteTr = montaTr(paciente);
 
     // MENSAGEM/ARRAY DE ERROS
-    let erro = validaPaciente(paciente);
-    console.log(erro);
+    let erros = validaPaciente(paciente);
+    console.log(erros);
     // SE o paciente for INVALIDO
-        if(erro.length > 0){
-            exibeMensagensDeErro(erro);
+        if(erros.length > 0){
+            exibeMensagensDeErro(erros);
             //var mensagemErro = document.querySelector('#mensagem-erro');
             return;
         }
